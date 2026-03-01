@@ -1,6 +1,4 @@
-@Engini.Employees.Api_HostAddress = http://localhost:5202
-
-GET {{Engini.Employees.Api_HostAddress}}/Employee/1
+GET http://localhost:5202/Employee/1
 Accept: application/json
 
 ###

@@ -16,7 +16,7 @@ public class EmployeeService : IEmployeeService
 
     public async Task<EmployeeDto?> GetEmployeeAsync(int id)
     {
-        var allEmployees = await _dbContext.Employees
+        var employees = await _dbContext.Employees
             .FromSqlInterpolated($@"
                     WITH EmpCTE AS (
                         SELECT Id, ManagerId, Name
@@ -34,16 +34,18 @@ public class EmployeeService : IEmployeeService
                     OPTION (MAXRECURSION 100);
                     ")
             .AsNoTracking()
-            .Select(e => new EmployeeDto()
+            .ToListAsync();
+        
+        var allEmployees = employees
+            .Select(e => new EmployeeDto
             {
                 Id = e.Id,
                 ManagerId = e.ManagerId,
                 Name = e.Name,
                 Manager = null,
-                Subordinates = new List<EmployeeDto>(),
+                Subordinates = new List<EmployeeDto>()
             })
-            .OrderBy(e => e.Id)
-            .ToListAsync();
+            .ToList();
 
         if (allEmployees.Count == 0)
             return null;
