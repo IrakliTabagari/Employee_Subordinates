@@ -6,6 +6,11 @@
 - Database: `Employees`
 - SQL User: `sa` / Password: `Secret123`
 
+## Setup Database
+```bash
+dotnet ef database update --project Engini.Employees.Api
+```
+
 ## Run
 ```bash
 dotnet run --project Engini.Employees.Api
