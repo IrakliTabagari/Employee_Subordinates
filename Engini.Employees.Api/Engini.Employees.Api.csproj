@@ -8,6 +8,12 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Engini.Employees.Infrastructure\Engini.Employees.Infrastructure.csproj" />
+      <ProjectReference Include="..\Engini.Employees.Services\Engini.Employees.Services.csproj" />
     </ItemGroup>
 
 </Project>
