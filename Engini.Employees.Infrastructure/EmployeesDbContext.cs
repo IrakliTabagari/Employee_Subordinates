@@ -36,5 +36,19 @@ public class EmployeesDbContext : DbContext
             .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasIndex(e => e.ManagerId);
+        
+        builder.HasData(
+            new Employee { Id = 1, ManagerId = null, Name = "Alice (CEO)" },
+
+            new Employee { Id = 2, ManagerId = 1, Name = "Bob (Head of Engineering)" },
+            new Employee { Id = 3, ManagerId = 2, Name = "Carol (Engineering Manager)" },
+            new Employee { Id = 4, ManagerId = 3, Name = "Dan (Team Lead)" },
+            new Employee { Id = 5, ManagerId = 4, Name = "Eva (Senior Developer)" },
+            new Employee { Id = 6, ManagerId = 4, Name = "Frank (Developer)" },
+            new Employee { Id = 7, ManagerId = 3, Name = "Grace (QA Engineer)" },
+
+            new Employee { Id = 8, ManagerId = 1, Name = "Henry (Head of HR)" },
+            new Employee { Id = 9, ManagerId = 8, Name = "Irene (Recruiter)" }
+        );
     }
 }
