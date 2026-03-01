@@ -16,6 +16,11 @@ public class EmployeesDbContext : DbContext
         
     }
     
+    public EmployeesDbContext(DbContextOptions<EmployeesDbContext> options)
+        : base(options)
+    {
+    }
+    
     private static void ConfigureEmployees(EntityTypeBuilder<Employee> builder)
     {
         builder.ToTable("Employees", "dbo");

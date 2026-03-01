@@ -16,7 +16,7 @@ builder.Services.AddOpenApi();
 var connectionString = builder.Configuration.GetConnectionString("ConnectionStrings");
 
 builder.Services.AddDbContext<EmployeesDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlServer(connectionString, b => b.MigrationsAssembly("Engini.Employees.Api")));
 
 var app = builder.Build();
 
